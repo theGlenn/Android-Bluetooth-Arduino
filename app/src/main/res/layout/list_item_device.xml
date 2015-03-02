@@ -2,16 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     android:orientation="vertical">
+
     <TextView
         android:id="@android:id/text1"
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="textttt"/>
+        android:text="x-com" />
+
     <TextView
         android:id="@android:id/text2"
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="zdazda"/>
+        android:text="0977UIUDI22" />
 
 </LinearLayout>

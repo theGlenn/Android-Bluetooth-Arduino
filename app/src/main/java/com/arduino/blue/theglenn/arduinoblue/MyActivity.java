@@ -60,7 +60,6 @@ public class MyActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
 
-
         //mArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
         mBlueAdapter = new BlueAdapter(this, R.layout.list_item_device);
 
@@ -110,7 +109,7 @@ public class MyActivity extends Activity {
         Log.d(Constants.BLE_TAG, "onActivityResult" + resultCode);
     }
 
-    void feedAdapter(BluetoothDevice device) {
+    private void feedAdapter(BluetoothDevice device) {
 
         mBlueAdapter.add(device);
         mBlueAdapter.notifyDataSetChanged();
