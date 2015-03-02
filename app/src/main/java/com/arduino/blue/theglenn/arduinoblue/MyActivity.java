@@ -25,7 +25,7 @@ import java.util.Set;
 
 public class MyActivity extends Activity {
 
-    private int REQUEST_ENABLE_BT = 42;
+    private static final int REQUEST_ENABLE_BT = 42;
 
     //private ArrayAdapter<String> mArrayAdapter;
     private BlueAdapter mBlueAdapter;
