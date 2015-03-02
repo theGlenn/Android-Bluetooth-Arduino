@@ -43,8 +43,12 @@ public class MyActivity extends Activity {
                 // Get the BluetoothDevice object from the Intent
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 // Add the name and address to an array adapter to show in a ListView
-                if (Constants.FILTER && device.getName().contains(Constants.FILTER_TAG)) {
-                    feedAdapter(device);
+                if (Constants.FILTER) {
+                    //The device does not match the required tag it is not added
+                    if (device.getName().contains(Constants.FILTER_TAG)) {
+                        feedAdapter(device);
+                    }
+
                 } else {
                     feedAdapter(device);
                 }
