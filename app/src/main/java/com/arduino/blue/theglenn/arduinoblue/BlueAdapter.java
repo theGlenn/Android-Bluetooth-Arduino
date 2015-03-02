@@ -1,6 +1,5 @@
 package com.arduino.blue.theglenn.arduinoblue;
 
-import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,18 +16,21 @@ import java.util.ArrayList;
 public class BlueAdapter extends ArrayAdapter<BluetoothDevice> {
 
     private final int layoutResourceId;
-    ArrayList<BluetoothDevice> items;
+    private ArrayList<BluetoothDevice> items;
+    private LayoutInflater inflater;
 
     public BlueAdapter(Context context, int layoutResourceId, ArrayList<BluetoothDevice> items) {
         super(context, layoutResourceId, items);
         this.items = items;
         this.layoutResourceId = layoutResourceId;
+        this.inflater = LayoutInflater.from(getContext());
     }
 
     public BlueAdapter(Context context, int layoutResourceId) {
         super(context, layoutResourceId);
         this.items = new ArrayList<BluetoothDevice>();
         this.layoutResourceId = layoutResourceId;
+        this.inflater = LayoutInflater.from(getContext());
     }
 
     public ArrayList<BluetoothDevice> getItems() {
@@ -48,27 +50,32 @@ public class BlueAdapter extends ArrayAdapter<BluetoothDevice> {
 
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View view, ViewGroup parent) {
 
-        View v = convertView;
+        ViewHolderDevice holder;
+        if (view != null) {
+            holder = (ViewHolderDevice) view.getTag();
+        } else {
 
-        if (v == null) {
-            LayoutInflater vi;
-            vi = LayoutInflater.from(getContext());
-            v = vi.inflate(layoutResourceId, null);
+            view = inflater.inflate(layoutResourceId, parent, false);
+
+            holder = new ViewHolderDevice();
+            holder.textView1 = (TextView) view.findViewById(android.R.id.text1);
+            holder.textView2 = (TextView) view.findViewById(android.R.id.text2);
+
+            view.setTag(holder);
         }
 
         BluetoothDevice bd = getItem(position);
 
-        if (bd != null) {
+        holder.textView1.setText(bd.getName());
+        holder.textView2.setText(bd.getAddress());
 
-            TextView t1 = (TextView) v.findViewById(android.R.id.text1);
-            TextView t2 = (TextView) v.findViewById(android.R.id.text2);
+        return view;
+    }
 
-            t1.setText(bd.getName());
-            t1.setText(bd.getAddress());
-        }
-
-        return v;
+    static class ViewHolderDevice {
+        TextView textView1;
+        TextView textView2;
     }
 }
