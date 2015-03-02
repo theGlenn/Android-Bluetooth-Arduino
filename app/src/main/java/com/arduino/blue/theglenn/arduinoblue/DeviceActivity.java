@@ -54,7 +54,7 @@ public class DeviceActivity extends Activity {
             }
         };
 
-        BluetoothDevice bluetoothDevice = getIntent().getExtras().getParcelable("btdevice");
+        BluetoothDevice bluetoothDevice = getIntent().getExtras().getParcelable(Constants.DEVICE_KEY);
         c = new ConnectThread(bluetoothDevice);
         c.start();
 
