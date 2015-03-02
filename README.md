@@ -1,6 +1,6 @@
 # Android-Bluetooth-Arduino
 
-Sample code of bi-directional(reading and writing) commucation beetwen an Android device and Arduino.
+Sample code of bi-directional(reading and writing) communication between an Android device and Arduino.
 ### Version
 1.0
 
